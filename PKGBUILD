@@ -1,6 +1,7 @@
 # Maintainer: Siavash Katebzadeh <mr@katebzadeh.xyz>
 pkgname=("papis" "papis-dmenu" "papis-zotero")
-pkgver="latest"
+pkgver=1
+packagever=("0.12" "0.3" "0.1.0")
 pkgrel=1
 pkgdesc="A powerful and flexible command-line document and bibliography manager"
 arch=('any')
@@ -29,30 +30,30 @@ depends=('python'
 	'python-lxml'
 	'python-slugify'
 )
-source=(papis-master.zip::"${url}/papis/archive/master.zip" papis-dmenu-master.zip::"${url}/papis-dmenu/archive/master.zip" papis-zotero-master.zip::"${url}/papis-zotero/archive/master.zip")
+source=(papis-v${packagever[0]}.tar.gz::"${url}/papis/archive/refs/tags/v${packagever[0]}.tar.gz" papis-dmenu-v${packagever[1]}.tar.gz::"${url}/papis-dmenu/archive/refs/tags/v${packagever[1]}.tar.gz" papis-zotero-v${packagever[2]}.tar.gz::"${url}/papis-zotero/archive/refs/tags/v${packagever[2]}.tar.gz")
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
 build() {
 	for i in ${!pkgname[@]}; do
-		cd "$srcdir/${pkgname[i]}-master"
+		cd "$srcdir/${pkgname[i]}-${packagever[i]}"
 		python setup.py build
 	done
 }
 
 package_papis() {
 	depends=('python-click' 'python-pyyaml' 'python-pybtex')
-	cd "$srcdir/${pkgname[0]}-master"
+	cd "$srcdir/${pkgname[0]}-${packagever[0]}"
 	python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_papis-dmenu() {
 	depends=('papis')
-	cd "$srcdir/${pkgname[1]}-master"
+	cd "$srcdir/${pkgname[1]}-${packagever[1]}"
 	python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_papis-zotero() {
 	depends=('papis')
-	cd "$srcdir/${pkgname[2]}-master"
+	cd "$srcdir/${pkgname[2]}-${packagever[2]}"
 	python setup.py install --root="$pkgdir" --optimize=1
 }
