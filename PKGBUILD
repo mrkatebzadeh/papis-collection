@@ -11,7 +11,7 @@ depends=('python'
 	'python-requests'
 	'python-filetype'
 	'python-pyparsing'
-	# 'python-configparser' This dependency from setup.py is part of the standard library in Python 3.10
+	'python-dmenu'
 	'python-arxiv2bib'
 	'python-pyaml'
 	'python-chardet'
