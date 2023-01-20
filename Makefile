@@ -1,4 +1,4 @@
-DEPENDENCIES=python-requests python-filetype python-pyparsing python-arxiv2bib python-pyaml python-chardet python-beautifulsoup4 python-colorama python-bibtexparser python-click python-habanero python-isbnlib python-prompt_toolkit python-tqdm python-pygments python-stevedore python-doi python-typing_extensions python-lxml python-slugify
+DEPENDENCIES=python-requests python-dmenu python-filetype python-pyparsing python-arxiv2bib python-pyaml python-chardet python-beautifulsoup4 python-colorama python-bibtexparser python-click python-habanero python-isbnlib python-prompt_toolkit python-tqdm python-pygments python-stevedore python-doi python-typing_extensions python-lxml python-slugify
 deps: 
 	yay --noconfirm --needed -S --asdeps ${DEPENDENCIES}
 
